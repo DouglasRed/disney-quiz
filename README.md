@@ -1,1 +1,1 @@
-# javascript-quiz
+# disney-quiz

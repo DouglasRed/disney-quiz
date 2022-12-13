@@ -1,0 +1,24 @@
+.flex-nav {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.flex-nav a {
+  text-decoration: none;
+}
+
+.prompt-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 40vh;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 5px;
+}
