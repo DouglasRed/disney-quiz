@@ -21,7 +21,7 @@ const questions = [
       { text: "Answer choice 1", correct: false },
       { text: "Answer choice 2", correct: true },
       { text: "Answer choice 3", correct: false },
-      { text: "Answer choice 4", incorrect: false },
+      { text: "Answer choice 4", correct: false },
     ],
   },
   {
@@ -30,7 +30,7 @@ const questions = [
       { text: "Answer choice 1", correct: false },
       { text: "Answer choice 2", correct: false },
       { text: "Answer choice 3", correct: true },
-      { text: "Answer choice 4", incorrect: false },
+      { text: "Answer choice 4", correct: false },
     ],
   },
 ];
@@ -58,13 +58,21 @@ const displayQuestion = function (newQuestion) {
     console.log(button);
     promptBoxEl.appendChild(button);
 
+    if (answer.correct) {
+      button.setAttribute("correct", true);
+    } else {
+      button.setAttribute("incorrect", true);
+    }
+
     button.addEventListener("click", selectAnswer);
   });
   console.log(newQuestion, question);
 };
 
-const selectAnswer = function () {
-  console.log("These buttons work!");
+const selectAnswer = function (event) {
+  let target = event.target;
+  console.log(target);
+  console.log(target.hasAttribute("correct"));
 };
 
 startQuizEl.addEventListener("click", startQuiz);
