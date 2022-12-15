@@ -1,3 +1,11 @@
+h2 {
+  font-size: 30px;
+}
+
+p {
+  font-size: 20px;
+}
+
 .flex-nav {
   list-style: none;
   display: flex;
@@ -21,4 +29,14 @@
 .btn {
   margin-top: 20px;
   padding: 5px;
+}
+
+.answer-choice {
+  color: #222;
+  background-color: #f0b45c;
+  text-align: left;
+}
+
+.hidden {
+  display: none;
 }
