@@ -18,9 +18,9 @@ p {
   text-decoration: none;
 }
 
-.prompt-box {
+.prompt-box,
+.button-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: 40vh;
@@ -35,6 +35,10 @@ p {
   color: #222;
   background-color: #f0b45c;
   text-align: left;
+}
+
+.return-btn a {
+  text-decoration: none;
 }
 
 .hidden {
