@@ -26,6 +26,16 @@ p {
   min-height: 40vh;
 }
 
+.scoreboard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.leaderboard {
+  font-size: 16px;
+}
+
 .btn {
   margin-top: 20px;
   padding: 5px;

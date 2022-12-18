@@ -3,6 +3,9 @@ const promptBoxEl = document.querySelector(".prompt-box");
 const promptTextEl = document.querySelector(".prompt");
 const mainTextEl = document.querySelector(".main-text");
 const buttonContainerEl = document.querySelector(".button-container");
+let time = document.querySelector(".time");
+// let timer = JSON.parse(time).innerHTML;
+let timer = JSON.parse(document.querySelector(".time").innerHTML);
 let shuffledQuestions;
 let currentQuestionIndex;
 let score = 0;
@@ -37,11 +40,19 @@ const questions = [
 ];
 
 const startQuiz = function () {
+  setTimeout(finalResults, 20000);
+  setInterval(startClock, 1000);
+  document.querySelector(".timer").classList.remove("hidden");
   document.querySelector(".start-quiz").className = "hidden";
   mainTextEl.className = "hidden";
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   setNextQuestion();
+};
+const startClock = function () {
+  timer--;
+  console.log(timer);
+  time.innerHTML = timer;
 };
 
 const setNextQuestion = function () {
@@ -51,7 +62,8 @@ const setNextQuestion = function () {
 
 const displayQuestion = function (newQuestion) {
   if (currentQuestionIndex === questions.length) {
-    scoreBoard();
+    saveScore();
+    finalResults();
   }
   promptTextEl.textContent = newQuestion.question;
   newQuestion.answers.forEach((answer) => {
@@ -69,6 +81,7 @@ const displayQuestion = function (newQuestion) {
     button.addEventListener("click", selectAnswer);
   });
   currentQuestionIndex++;
+  saveScore();
 };
 
 const selectAnswer = function (event) {
@@ -96,8 +109,13 @@ const resetState = function () {
   buttonContainerEl.innerHTML = "";
 };
 
-const scoreBoard = function () {
+const saveScore = function () {
+  localStorage.setItem("score", JSON.stringify(score));
+};
+
+const finalResults = function () {
   window.location.assign("./scoreboard.html");
+  window.alert("Submit your score");
 };
 
 startQuizEl.addEventListener("click", startQuiz);

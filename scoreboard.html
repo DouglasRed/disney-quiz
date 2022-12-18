@@ -11,14 +11,27 @@
     <header>
       <nav>
         <ul class="flex-nav">
-          <li><a href="./index.html">Back to homepage</a></li>
+          <li><a href="./index.html">Back to Homepage</a></li>
         </ul>
       </nav>
     </header>
     <section class="prompt-box">
       <h2 class="prompt">High Scores</h2>
       <p class="main-text">How did you do against everybody else?</p>
-      <button class="btn return-btn"><a href=index.html>Back to homepage<a/></button>
+      <div class="scoreboard">
+        <form class="score-form hidden">
+          <input
+            class="name-input"
+            type="text"
+            name="leader-board-name"
+            placeholder="Enter Your Name"
+          />
+          <button class="submit-score" type="submit">Submit Score</button>
+        </form>
+        <ul class="scoreboard-list">
+        </ul>
+      </div>
+      <button class="btn return-btn"><a href=index.html>Back to Homepage<a/></button>
     </section>
     <script src="./assets/javascript/highscore.js"></script>
   </body>
