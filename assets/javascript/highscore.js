@@ -64,7 +64,19 @@ const loadLeaderboard = function () {
   console.log("saved leaderboard found");
   savedLeaderboard = JSON.parse(savedLeaderboard);
 
-  for (let i = 0; i < savedLeaderboard.length; i++) {
+  function compare(a, b) {
+    const value1 = a.score;
+    const value2 = b.score;
+    let comparison = 0;
+    if (value1 < value2) {
+      comparison = 1;
+    } else if (value2 < value1) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+  savedLeaderboard.sort(compare);
+  for (let i = 0; i < 5; i++) {
     createEntry(savedLeaderboard[i]);
   }
 };
