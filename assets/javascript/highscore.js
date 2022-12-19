@@ -1,12 +1,12 @@
-const listEl = document.querySelector("scoreboard-list");
+const listEl = document.querySelector("#scoreboard-list");
+const scoreBtn = document.querySelector("#submit-score");
+const formEl = document.querySelector("#score-form");
 let leaders = [];
 let currentScore = localStorage.getItem("score");
 
-// const leaveScore = function () {
-//   document.querySelector(".score-form").classList.remove("hidden");
-//   const scoreBtn = document.querySelector("submit-score");
-//   scoreBtn.addEventListener("submit", leaderBoardInput);
-// };
+if (!currentScore) {
+  document.querySelector("#score-form").className = "hidden";
+}
 
 const createEntry = function (highscoreObj) {
   const leaderBoardEl = document.createElement("li");
@@ -15,11 +15,20 @@ const createEntry = function (highscoreObj) {
   console.log(highscoreObj.name);
   console.log(highscoreObj.score);
   listEl.appendChild(leaderBoardEl);
+  leaders.push(highscoreObj);
 };
 
-const leaderBoardInput = function (event) {
+const resetScore = function () {
+  let score = 0;
+  localStorage.setItem("score", JSON.stringify(score));
+  currentScore = 0;
+  console.log(currentScore, score);
+  formEl.className = "hidden";
+};
+// might have to move the event.prevent
+const leaderBoardSubmit = function (event) {
   event.preventDefault();
-
+  console.log("form submitted");
   let currentScore = localStorage.getItem("score");
   const leaderBoardInput = document.querySelector(
     "input[name='leader-board-name']"
@@ -27,37 +36,38 @@ const leaderBoardInput = function (event) {
 
   if (!leaderBoardInput) {
     alert("You need to fill out your name or initials!");
-  } else {
+  } else if (!currentScore || currentScore === 0) {
     alert("You need to complete the quiz!");
+  } else {
+    const highscoreObj = {
+      name: leaderBoardInput,
+      score: currentScore,
+    };
+    saveLeaderboard(leaders);
+    createEntry(highscoreObj);
+
+    saveLeaderboard(highscoreObj);
   }
-  const highscoreObj = {
-    name: leaderBoardInput,
-    score: currentScore,
-  };
-  createEntry(highscoreObj);
 };
 
-// const loadScore = function () {
-//   let currentScore = localStorage.getItem("score");
-//   if (!currentScore) {
-//     return false;
-//   }
-//   console.log("Found score!");
-//   currentScore = JSON.parse(currentScore);
-//   // createEntry();
-// };
+const saveLeaderboard = function () {
+  localStorage.setItem("leaderboard", JSON.stringify(leaders));
+  resetScore();
+};
 
-// const loadHighscore = function () {
-//   let highscores = localStorage.getItem("highscore");
-//   if (!highscores) {
-//     return false;
-//   }
-//   console.log("Found highscore!");
-//   highscores = JSON.parse(highscores);
+const loadLeaderboard = function () {
+  let savedLeaderboard = localStorage.getItem("leaderboard");
+  console.log(savedLeaderboard);
+  if (!savedLeaderboard) {
+    return false;
+  }
+  console.log("saved leaderboard found");
+  savedLeaderboard = JSON.parse(savedLeaderboard);
 
-//   for (let i = 0; i < highscores.length; i++) {
-//     recordHighScore([i]);
-//   }
-// };
+  for (let i = 0; i < savedLeaderboard.length; i++) {
+    createEntry(savedLeaderboard[i]);
+  }
+};
 
-// loadScore();
+loadLeaderboard();
+formEl.addEventListener("submit", leaderBoardSubmit);
