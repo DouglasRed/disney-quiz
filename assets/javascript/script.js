@@ -40,7 +40,6 @@ const questions = [
 ];
 
 const startQuiz = function () {
-  setTimeout(finalResults, 20000);
   setInterval(startClock, 1000);
   document.querySelector(".timer").classList.remove("hidden");
   document.querySelector(".start-quiz").className = "hidden";
@@ -50,9 +49,14 @@ const startQuiz = function () {
   setNextQuestion();
 };
 const startClock = function () {
-  timer--;
-  console.log(timer);
-  time.innerHTML = timer;
+  if (timer > 0) {
+    timer--;
+    console.log(timer);
+    time.innerHTML = timer;
+  } else {
+    timer = 0;
+    finalResults();
+  }
 };
 
 const setNextQuestion = function () {
@@ -95,6 +99,8 @@ const selectAnswer = function (event) {
     setNextQuestion();
   } else {
     score -= 15;
+    timer -= 10;
+    time.innerHTML = timer;
     if (score < 0) {
       score = 0;
     }
@@ -114,8 +120,8 @@ const saveScore = function () {
 };
 
 const finalResults = function () {
+  clearInterval();
   window.location.assign("./scoreboard.html");
-  window.alert("Submit your score");
 };
 
 startQuizEl.addEventListener("click", startQuiz);

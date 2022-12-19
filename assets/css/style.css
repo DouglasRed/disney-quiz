@@ -6,6 +6,10 @@ p {
   font-size: 20px;
 }
 
+.main-text {
+  text-align: center;
+  width: 50%;
+}
 .flex-nav {
   list-style: none;
   display: flex;
