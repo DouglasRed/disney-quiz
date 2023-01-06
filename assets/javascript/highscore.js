@@ -1,13 +1,7 @@
 const listEl = document.querySelector("#scoreboard-list");
 const scoreBtn = document.querySelector("#submit-score");
 const formEl = document.querySelector("#score-form");
-let leaders = [
-  { name: "N/A", score: "0" },
-  { name: "N/A", score: "0" },
-  { name: "N/A", score: "0" },
-  { name: "N/A", score: "0" },
-  { name: "N/A", score: "0" },
-];
+let leaders = [];
 let currentScore = localStorage.getItem("score");
 
 if (!currentScore) {
@@ -68,12 +62,14 @@ const loadLeaderboard = function () {
     return false;
   }
   console.log("saved leaderboard found");
+
   savedLeaderboard = JSON.parse(savedLeaderboard);
   console.log(savedLeaderboard);
+
   if (savedLeaderboard.length > 1) {
     function compare(a, b) {
-      const value1 = a.score;
-      const value2 = b.score;
+      const value1 = parseInt(a.score);
+      const value2 = parseInt(b.score);
       let comparison = 0;
       if (value1 < value2) {
         comparison = 1;
@@ -84,7 +80,12 @@ const loadLeaderboard = function () {
     }
     savedLeaderboard.sort(compare);
   }
-  for (let i = 0; i < 5; i++) {
+  if (savedLeaderboard.length >= 5) {
+    savedLeaderboard.length = 5;
+    console.log(savedLeaderboard);
+  }
+
+  for (let i = 0; i < savedLeaderboard.length; i++) {
     console.log(savedLeaderboard[i]);
     createEntry(savedLeaderboard[i]);
   }

@@ -11,30 +11,99 @@ let currentQuestionIndex;
 let score = 0;
 const questions = [
   {
-    question: "This is Question 1",
+    question: "What is the highest grossing Star Wars movie as of 2023",
     answers: [
-      { text: "Answer choice 1", correct: true },
-      { text: "tfyrfjjyyhjy", correct: false },
-      { text: "Ayjyyyjgfhhjnice 3", correct: false },
-      { text: "Cdfhjmmjukjk,j", correct: false },
+      { text: "The Force Awakens", correct: true },
+      { text: "The Empire Strikes Back", correct: false },
+      { text: "A New Hope", correct: false },
+      { text: "The Last Jedi ", correct: false },
     ],
   },
   {
-    question: "This is Question 2",
+    question: "Where was East High in High School Musical located",
     answers: [
-      { text: "Aghfjhjhjfj", correct: false },
-      { text: "fhfgkuyttdg", correct: true },
-      { text: "323546667587", correct: false },
-      { text: "087sfgjhgfjf87", correct: false },
+      { text: "Chicago, Illinois", correct: false },
+      { text: "Albuquerque, New Mexico", correct: true },
+      { text: "Miami, Florida", correct: false },
+      { text: "Reno, Nevada", correct: false },
     ],
   },
   {
-    question: "This is Question 3",
+    question: "Which Character is not a Disney character",
     answers: [
-      { text: "07894jh54kl5", correct: false },
-      { text: "3544uktyuk", correct: false },
-      { text: "4tythgfdsghkj", correct: true },
-      { text: "Happy Birthday", correct: false },
+      { text: "Spider-man", correct: false },
+      { text: "Hawkeye", correct: false },
+      { text: "Batman", correct: true },
+      { text: "Black Widow", correct: false },
+    ],
+  },
+  {
+    question:
+      "In Encanto, which character could heal others through their homecooked meals?",
+    answers: [
+      { text: "Pepa Madrigal", correct: false },
+      { text: "Bruno Madrigal", correct: false },
+      { text: "Mirabel Madrigal", correct: false },
+      { text: "Julieta Madrigal", correct: true },
+    ],
+  },
+  {
+    question: "In \"That's So Raven\" what was Raven's secret ability?",
+    answers: [
+      { text: "She had telekenisis", correct: false },
+      { text: "She was part mermaid", correct: false },
+      { text: "She was a math genius", correct: false },
+      { text: "She could see the future", correct: true },
+    ],
+  },
+  {
+    question:
+      "In Kim Possible, who was her behind the scenes technological partner?",
+    answers: [
+      { text: "Wade", correct: true },
+      { text: "Dr Drakken", correct: false },
+      { text: "Ron", correct: false },
+      { text: "Rufus", correct: false },
+    ],
+  },
+  {
+    question: "In Hannah Montana, who had a photographic memory ",
+    answers: [
+      { text: "Miley Cyrus", correct: false },
+      { text: "Rico Suave", correct: true },
+      { text: "Jake Ryan", correct: false },
+      { text: "Lilly Truscott", correct: false },
+    ],
+  },
+  {
+    question: "What were the name of the bullies in the Proud Family",
+    answers: [
+      { text: "The Nasty Sisters", correct: false },
+      { text: "The Sticky Sisters", correct: false },
+      { text: "The Ugly Sisters", correct: false },
+      { text: "The Gross Sisters", correct: true },
+    ],
+  },
+  {
+    question:
+      "What is the name of the bellboy in The Suite Life of Zack and Cody ",
+    answers: [
+      {
+        text: "Esteban Montoya Julio Ricardo de la Rosa Ramírez",
+        correct: false,
+      },
+      {
+        text: "Esteban Ricardo Julio Montoya de la Rosa Rodriguez",
+        correct: false,
+      },
+      {
+        text: "Esteban Julio Ricardo Montoya de la Rosa Ramírez",
+        correct: true,
+      },
+      {
+        text: "Esteban Ricardo Montoya Julio de la Rosa Rodriguez",
+        correct: false,
+      },
     ],
   },
 ];
